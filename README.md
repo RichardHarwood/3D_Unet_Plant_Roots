@@ -1,4 +1,9 @@
 # An overview of plant root segmentation using 3D-Unet 
+To run the google colab doc click on the .ipynb file above and then click open in colab button (looks like the one shown below)
+<p align="left">
+<img  src=https://colab.research.google.com/assets/colab-badge.svg > 
+</p>
+
 
 ### Overview
 Segmenting plant roots from CT (computed tomography) data presents a unique set of challenges due to the intricate and often complex nature of root structures. CT imaging provides detailed three-dimensional information, making it invaluable for studying root architecture non-destructively. However, the segmentation process involves distinguishing roots from surrounding soil and other tissues, which can be particularly challenging due to variations in root density, morphology, and the presence of organic matter. Additionally, the resolution of CT scans may vary, impacting the clarity and accuracy of root segmentation. Overcoming these challenges requires sophisticated image processing techniques, including thresholding, edge detection, and machine learning algorithms tailored to handle the specific characteristics of root structures in CT data. Effective segmentation is crucial for advancing research in plant biology, agronomy, and environmental science, enabling deeper insights into root growth dynamics, nutrient uptake, and interactions with the soil environment.
