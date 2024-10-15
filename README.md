@@ -24,7 +24,8 @@ The goal of training data is to train the model what our object(s) of interest a
 Here we use the PyTorch 3D-Unet, in particualr, the package described in Wolny et al., (2022) (https://github.com/wolny/pytorch-3dunet). For nuanced details about tweaking models (e.g. loss functions, evaluation functions etc we recommend the Wolny et al., 2022 paper but note that the PyTorch documentation is the best place to start). Essentially the package created by Wolny et al., 2022 is an excellent interface to leverage the deep learning tools within PyTorch. In essence, to successfully use AI as microscopists (or anyone just incorporating imaging into their experiments) the bulk of the time should be spent on creating high quality training data. Realistically, most researchers are not invested in enough to explore dozens of model iterations but rather want an “out the box” tool for their image analysis problem. 
 
 # TO DO 
-- create transfer learning colab notebook. 
+- create transfer learning colab notebook.
+- create tiff to h5 notebook (might be useful for some)
 - add more to the readme.
 - sort out zenodoo files (images and wget for models in colab)
 - 
