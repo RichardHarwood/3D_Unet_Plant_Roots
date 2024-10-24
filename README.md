@@ -1,6 +1,17 @@
 # An overview of plant root segmentation using 3D-Unet 
 To run the google colab doc click on the .ipynb file above and then click open in colab button. 
 
+#### An overview of the notebooks:
+##### Train_3D_Unet_Plant_Roots.ipynb
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; This notebook loads in some examples training data and splits it into “train”, “quality control” and “test” folders in your google drive. The model is then trained on the “train” images and validated on the “quality control” images. Once the model is trained you can inspect how it performed on the “test” data. Note that due to limitations on colab run times results may not be perfect (circumnavigated by buying time on colab or running the script locally) 
+
+#####  3D_Unet_general_example.ipynb 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; This notebook loads in the 3D Unet model trained using (parts) of  this  [data ]( https://zenodo.org/records/13943098) and segments a brachypodium scan courtesy of Sheikh Rabbi. This notebook highlights how the model can get pretty good segmentations from “random” datasets.  
+
+
+
+
+
 The colab notebook should require “no coding”, to get an initial understanding of the workflow it pulls data from zenodo (a small subset from the data used in the manuscript) to illustrate how a 3D-Unet workflow works, in particular with plant roots in soil. 
 
 The colab document contains a more in depth explanation of the code, below is more of an overview of the benefit 3D-Unet has for segmentation of plant roots in soil along with some explanations to provide context. 
