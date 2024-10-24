@@ -9,12 +9,9 @@ To run the google colab doc click on the .ipynb file above and then click open i
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; This notebook loads in the 3D Unet model trained using (parts) of  this  [data ]( https://zenodo.org/records/13943098) and segments a brachypodium scan courtesy of Sheikh Rabbi. This notebook highlights how the model can get pretty good segmentations from “random” datasets.  
 
 
+The colab notebook should require “no coding”, to get an initial understanding of the workflow, the only inputs are linking your google drive (which is prompted)
 
-
-
-The colab notebook should require “no coding”, to get an initial understanding of the workflow it pulls data from zenodo (a small subset from the data used in the manuscript) to illustrate how a 3D-Unet workflow works, in particular with plant roots in soil. 
-
-The colab document contains a more in depth explanation of the code, below is more of an overview of the benefit 3D-Unet has for segmentation of plant roots in soil along with some explanations to provide context. 
+The colab documents contains a more in depth explanation of the code, below is more of an overview of the benefit 3D-Unet has for segmentation of plant roots in soil along with some explanations to provide context. 
 
 ### Overview
 Segmenting plant roots from CT (computed tomography) data presents a unique set of challenges due to the intricate and often complex nature of root structures. CT imaging provides detailed three-dimensional information, making it invaluable for studying root architecture non-destructively. However, the segmentation process involves distinguishing roots from surrounding soil and other tissues, which can be particularly challenging due to variations in root density, morphology, and the presence of organic matter. Additionally, the resolution of CT scans may vary, impacting the clarity and accuracy of root segmentation. Overcoming these challenges requires sophisticated image processing techniques, including thresholding, edge detection, and machine learning algorithms tailored to handle the specific characteristics of root structures in CT data. Effective segmentation is crucial for advancing research in plant biology, agronomy, and environmental science, enabling deeper insights into root growth dynamics, nutrient uptake, and interactions with the soil environment.
