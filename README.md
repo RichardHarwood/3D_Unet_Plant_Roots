@@ -8,6 +8,9 @@ To run the google colab doc click on the .ipynb file above and then click open i
 #####  3D_Unet_general_example.ipynb 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; This notebook loads in the 3D Unet model trained using (parts) of  this  [data ]( https://zenodo.org/records/13943098) and segments a brachypodium scan courtesy of Sheikh Rabbi. This notebook highlights how the model can get pretty good segmentations from “random” datasets.  
 
+#####  Analysis_Examples_Incorparating_3D_Unet.ipynb
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; This notebook segments data (currently set up for the Test data example in Figure 3) and runs anlaysis on the segmented root system (shown in Figure 7)
+
 
 The colab notebook should require “no coding”, to get an initial understanding of the workflow, the only inputs are linking your google drive (which is prompted)
 
