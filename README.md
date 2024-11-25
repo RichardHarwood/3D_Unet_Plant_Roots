@@ -1,42 +1,47 @@
-# An overview of plant root segmentation using 3D-Unet 
-To run the google colab doc click on the .ipynb file above and then click open in colab button. 
+<h1 align="center"> An overview of plant root segmentation using 3D-Unet  </h1>
+<br>
+
+<p align="center">
+  <img src="content/3D_Unet_Workflow.png" width=40% height=40%>
+</p>
+<br>
+
+
+To run the GoogleColab doc click on the .ipynb file above and then click open in colab button. 
 
 #### An overview of the notebooks:
 ##### Train_3D_Unet_Plant_Roots.ipynb
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; This notebook loads in some examples training data and splits it into “train”, “quality control” and “test” folders in your google drive. The model is then trained on the “train” images and validated on the “quality control” images. Once the model is trained you can inspect how it performed on the “test” data. Note that due to limitations on colab run times results may not be perfect (circumnavigated by buying time on colab or running the script locally) 
+ - This notebook loads in example training data and splits it into “train”, “quality control” and “test” folders in your Google Drive. The model is then trained on the “train” images and validated on the “quality control” images.  Once the model is trained you can inspect how it performed on the “test” data. Note that due to limitations on colab run times results may not be perfect. 
 
 #####  3D_Unet_general_example.ipynb 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; This notebook loads in the 3D Unet model trained using (parts) of  this  [data ]( https://zenodo.org/records/13943098) and segments a brachypodium scan courtesy of Sheikh Rabbi. This notebook highlights how the model can get pretty good segmentations from “random” datasets.  
+ - This notebook loads in the 3D Unet model trained using (parts) of  this  [data ]( https://zenodo.org/records/13943098) and segments a brachypodium scan courtesy of Sheikh Rabbi. This notebook highlights how the model can get pretty good segmentations from “random” datasets.  
+
+#####  Rootine_Transfer_Learning.ipynb
+ - This notebook segments the Rootine-V2 example using the “generalized model” and then retrains that model to produce new segmentations. Note this notebook crops out data to fit into the Colab notebook run times. 
 
 #####  Analysis_Examples_Incorparating_3D_Unet.ipynb
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; This notebook segments data (currently set up for the Test data example in Figure 3) and runs anlaysis on the segmented root system (shown in Figure 7)
+ - This notebook segments data using the 3D-Unet and then skeletonizes the root system, visualizes root density and extracts the pore-network in the rhizosphere.
 
 
-The colab notebook should require “no coding”, to get an initial understanding of the workflow, the only inputs are linking your google drive (which is prompted)
+The GoogleColab notebooks  require “no coding”, to get an initial understanding of the workflow, the only inputs are linking your Google Drive (which is prompted, only need to click approve)
+The GoogleColab documents contains a more in depth explanation of the code, below is more of an overview of the benefit 3D-Unet has for segmentation of plant roots in soil along with some explanations to provide context. 
 
-The colab documents contains a more in depth explanation of the code, below is more of an overview of the benefit 3D-Unet has for segmentation of plant roots in soil along with some explanations to provide context. 
+*It is likely you will get frustrated with GoogleColab run times being cut short. The options are then to pay (not recommended if you have access to computational resources) or set up the workflow locally. Setting up locally will require Anaconda being installed, see this <a href="https://saturncloud.io/blog/how-to-run-google-colab-locally-a-step-by-step-guide/"> guide </a> <br /> for a quick overview of running the notebooks on your local hardware* 
 
-### Overview
-Segmenting plant roots from CT (computed tomography) data presents a unique set of challenges due to the intricate and often complex nature of root structures. CT imaging provides detailed three-dimensional information, making it invaluable for studying root architecture non-destructively. However, the segmentation process involves distinguishing roots from surrounding soil and other tissues, which can be particularly challenging due to variations in root density, morphology, and the presence of organic matter. Additionally, the resolution of CT scans may vary, impacting the clarity and accuracy of root segmentation. Overcoming these challenges requires sophisticated image processing techniques, including thresholding, edge detection, and machine learning algorithms tailored to handle the specific characteristics of root structures in CT data. Effective segmentation is crucial for advancing research in plant biology, agronomy, and environmental science, enabling deeper insights into root growth dynamics, nutrient uptake, and interactions with the soil environment.
-<br>
-<br>
-Here we show that deep learning, focusing on 3D-Unet, is an excellent tool to segment plant roots in growing media. We show this firstly for data we have collected, we then show that in some cases our deep learning model will segment data from different experiments. Lastly, we show how the model can be retrained to segment new data, avoiding the need to “start from scratch”. 
-<br>
+#### An overview of the publicly available data:
 
-### Creating Training Data and Training a model
-The goal of training data is to train the model what our object(s) of interest are. Realistically a whole CT scan cannot be used to train as such we need to break the 3D volume down into “patches”. This step involves hand labelling the raw data slice by slice (often in different orthogonal views to capture roots in different directions, Figure 1 a,b) to create a 3D mask 
+##### <a href="https://zenodo.org/records/14189395"> Training Data - Plant root segmentation using 3D-Unet </a> <br />
+This repository contains the CT data and masks used to train the initial model along with a spreadsheet explaining the datasets. It also contains the 3 models used in the paper (.pytorch files) <br />
+1) 3D_Unet_Root_Model.pytorch - This is the model trained from "Training Data - Plant root segmentation using 3D-Unet", it has the most diverse training data, was trained first and thus became the "generalised" model<br />
+2) Rootine_V2_Example_Model.pytorch - The retrained model used to segment the Rootine-V2 example<br />
+3) Phalempin_Unpublished_Example_Model.pytorch - The retrained model used to segment the Phalempin et al., (unpublished) examples<br />
 
-<p align="center">
-<img  src="content/validation eg.png" > 
-</p>
 
-###### Figure 1: The deep learning workflow. Example 3D training data (a) and a corresponding 2D slice with the root mask overlayed (b). An example of comparing the testing data (manually segmented data that the model has never seen (c)) to the model output (d). The difference between (c) and (d) are captured in the quality control metrics (for this image: precision: 0.97, recall: 0.80 and f1:0.87). The model is then used to segment 3D images stacks (f).      
+##### <a href="https://zenodo.org/records/13984519"> CT Scans of Roots in Soil </a> <br />
+This repository contains the CT data and masks used to (retrain) the models for the Rootine-V2 example and the Phalempin et al., (unpublished), it includes the sub-volumes used for training and the full datasets used to compare the 3D length to 2D washed root length.  
 
-Here we use the PyTorch 3D-Unet, in particualr, the package described in Wolny et al., (2022) (https://github.com/wolny/pytorch-3dunet). For nuanced details about tweaking models (e.g. loss functions, evaluation functions etc we recommend the Wolny et al., 2022 paper but note that the PyTorch documentation is the best place to start). Essentially the package created by Wolny et al., 2022 is an excellent interface to leverage the deep learning tools within PyTorch. In essence, to successfully use AI as microscopists (or anyone just incorporating imaging into their experiments) the bulk of the time should be spent on creating high quality training data. Realistically, most researchers are not invested in enough to explore dozens of model iterations but rather want an “out the box” tool for their image analysis problem. 
+##### <a href="https://zenodo.org/records/13958667"> Generalised Root Segmentation Example Using 3D-Unet </a> <br />
+This repository contains the CT scan of the Brachypodium root from Rabbi (Unpublished) and the “generalised” / 1st 3D-Unet model  
 
-# TO DO 
-- create transfer learning colab notebook.
-- create tiff to h5 notebook (might be useful for some)
-- add more to the readme.
-- sort out zenodoo files (images and wget for models in colab)
-- 
+
+
