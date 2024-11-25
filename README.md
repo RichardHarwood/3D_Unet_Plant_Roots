@@ -7,7 +7,7 @@
 <br>
 
 
-To run the GoogleColab doc click on the .ipynb file above and then click open in colab button. 
+To run the GoogleColab notebooks click on the .ipynb file above and then click open in colab button. 
 
 #### An overview of the notebooks:
 ##### Train_3D_Unet_Plant_Roots.ipynb
