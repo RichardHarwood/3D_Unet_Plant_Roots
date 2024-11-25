@@ -7,17 +7,17 @@
 <br>
 
 
-To run the GoogleColab notebooks click on the .ipynb file above and then click open in colab button. 
+To run the GoogleColab notebooks click on the .ipynb file above and then click this button <img src="content/colab.svg">. This will open the notebook in the GoogleColab cloud computing environment 
 
 #### An overview of the notebooks:
-##### Train_3D_Unet_Plant_Roots.ipynb
+##### Train_3D_Unet_Plant_Roots.ipynb (Part 1 on flow chart)
  - This notebook loads in example training data and splits it into “train”, “quality control” and “test” folders in your Google Drive. The model is then trained on the “train” images and validated on the “quality control” images.  Once the model is trained you can inspect how it performed on the “test” data. Note that due to limitations on colab run times results may not be perfect. 
 
-#####  3D_Unet_general_example.ipynb 
- - This notebook loads in the 3D Unet model trained using (parts) of  this  [data ]( https://zenodo.org/records/13943098) and segments a brachypodium scan courtesy of Sheikh Rabbi. This notebook highlights how the model can get pretty good segmentations from “random” datasets.  
+#####  Rootine_Transfer_Learning.ipynb (Part 2 on flow chart)
+ - This notebook segments the Rootine-V2 example using the “generalized model” and then retrains that model to produce new segmentations. Note this notebook crops out data to fit into the Colab notebook run times.
 
-#####  Rootine_Transfer_Learning.ipynb
- - This notebook segments the Rootine-V2 example using the “generalized model” and then retrains that model to produce new segmentations. Note this notebook crops out data to fit into the Colab notebook run times. 
+#####  3D_Unet_general_example.ipynb (Part 3 on flow chart)
+ - This notebook loads in the 3D Unet model trained using (parts) of  this  [data ]( https://zenodo.org/records/13943098) and segments a brachypodium scan courtesy of Sheikh Rabbi. This notebook highlights how the model can get pretty good segmentations from “random” datasets.  
 
 #####  Analysis_Examples_Incorparating_3D_Unet.ipynb
  - This notebook segments data using the 3D-Unet and then skeletonizes the root system, visualizes root density and extracts the pore-network in the rhizosphere.
@@ -32,9 +32,12 @@ The GoogleColab documents contains a more in depth explanation of the code, belo
 
 ##### <a href="https://zenodo.org/records/14189395"> Training Data - Plant root segmentation using 3D-Unet </a> <br />
 This repository contains the CT data and masks used to train the initial model along with a spreadsheet explaining the datasets. It also contains the 3 models used in the paper (.pytorch files) <br />
-1) 3D_Unet_Root_Model.pytorch - This is the model trained from "Training Data - Plant root segmentation using 3D-Unet", it has the most diverse training data, was trained first and thus became the "generalised" model<br />
-2) Rootine_V2_Example_Model.pytorch - The retrained model used to segment the Rootine-V2 example<br />
-3) Phalempin_Unpublished_Example_Model.pytorch - The retrained model used to segment the Phalempin et al., (unpublished) examples<br />
+1) **3D_Unet_Root_Model.pytorch** - This is the model trained from "Training Data - Plant root segmentation using 3D-Unet", it has the most diverse training data, was trained first and thus became the "generalised" model<br />
+
+2) **Rootine_V2_Example_Model.pytorch** - The retrained model used to segment the Rootine-V2 example<br />
+
+3) **Phalempin_Unpublished_Example_Model.pytorch** - The retrained model used to segment the Phalempin et al., (unpublished) examples<br />
+
 
 
 ##### <a href="https://zenodo.org/records/13984519"> CT Scans of Roots in Soil </a> <br />
