@@ -2,7 +2,7 @@
 <br>
 
 <p align="center">
-  <img src="content/3D_Unet_Workflow.png" width=40% height=40%>
+  <img src="content/3D_Unet_Workflow.png" width=30% height=30%>
 </p>
 <br>
 
